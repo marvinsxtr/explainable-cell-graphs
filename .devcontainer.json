@@ -1,0 +1,27 @@
+{
+    "build": {"dockerfile": "Dockerfile", "args": {"platform": "linux/amd64"}},
+	"workspaceFolder": "/srv/repo",
+    "workspaceMount": "source=${localWorkspaceFolder},target=/srv/repo,type=bind",
+    "customizations": {
+        "vscode": {
+            "extensions": [
+                "ms-python.debugpy",
+                "ms-python.python",
+                "ms-python.vscode-pylance",
+                "ms-python.mypy-type-checker",
+                "charliermarsh.ruff",
+                "tamasfe.even-better-toml",
+                "ms-azuretools.vscode-docker"
+            ],
+            "settings": {
+                "[python]": {
+                    "editor.defaultFormatter": "charliermarsh.ruff",
+                    "editor.formatOnSave": true,
+                    "editor.codeActionsOnSave": {
+                        "source.organizeImports": "explicit"
+                    }
+                }
+            }
+        }
+    }
+}
