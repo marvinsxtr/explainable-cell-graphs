@@ -1,6 +1,16 @@
 # Explainable Cell Graphs
 
-This repository contains the implementation of explainable cell graphs (xCG).
+![version](https://img.shields.io/badge/version-0.1-blue)
+![Python](https://img.shields.io/badge/Python-3.12-green)
+[![arXiv](https://img.shields.io/badge/arXiv-2411.07643-b31b1b.svg)](https://arxiv.org/abs/2411.07643)
+
+<b>xCG: Explainable Cell Graphs for Survival Prediction in Non-Small Cell Lung Cancer</b></br>
+<em>Marvin Sextro*, Gabriel Dernbach*, Kai Standvoss, Simon Schallenberg, Frederick Klauschen, Klaus-Robert Müller, Maximilian Alber, Lukas Ruff</em></br>
+
+\* These authors contributed equally</br>
+Findings paper presented at Machine Learning for Health (ML4H) symposium 2024, December 15-16, 2024, Vancouver, Canada
+
+**Abstract**: Understanding how deep learning models predict oncology patient risk can provide critical insights into disease progression, support clinical decision-making, and pave the way for trustworthy and data-driven precision medicine. Building on recent advances in the spatial modeling of the tumor microenvironment using graph neural networks, we present an explainable cell graph (xCG) approach for survival prediction. We validate our model on a public cohort of imaging mass cytometry (IMC) data for 416 cases of lung adenocarcinoma. We explain survival predictions in terms of known phenotypes on the cell level by computing risk attributions over cell graphs, for which we propose an efficient grid-based layer-wise relevance propagation (LRP) method. Our ablation studies highlight the importance of incorporating the cancer stage and model ensembling to improve the quality of risk estimates. Our xCG method, together with the IMC data, is made publicly available to support further research.
 
 ## Setup
 
@@ -99,10 +109,20 @@ python cell_graphs/nested_cv.py config=nested_cv
 
 In order to ensemble risk predictions, one has to first run one of the previous cross-validation commands and log to WandB. Our ensemble script will then load the model predictions from WandB and use them to create a median risk ensemble over seeds.
 
-#### External
-
 ```bash
 python cell_graphs/ensemble.py config=base config.ensemble.wandb_group=$GROUP_ID
 ```
 
 ## Citation
+
+```
+@misc{sextro2024xcgexplainablecellgraphs,
+    title={x{CG}: Explainable Cell Graphs for Survival Prediction in Non-Small Cell Lung Cancer}, 
+    author={Marvin Sextro and Gabriel Dernbach and Kai Standvoss and Simon Schallenberg and Frederick Klauschen and Klaus-Robert Müller and Maximilian Alber and Lukas Ruff},
+    year={2024},
+    eprint={2411.07643},
+    archivePrefix={arXiv},
+    primaryClass={cs.CV},
+    url={https://arxiv.org/abs/2411.07643}, 
+}
+```
